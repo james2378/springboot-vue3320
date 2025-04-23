@@ -1,0 +1,189 @@
+package com.entity;
+
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.lang.reflect.InvocationTargetException;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.apache.commons.beanutils.BeanUtils;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.enums.FieldFill;
+import com.baomidou.mybatisplus.enums.IdType;
+
+/**
+ * 作业回答
+ *
+ * @author 
+ * @email
+ */
+@TableName("zuoyehuida")
+public class ZuoyehuidaEntity<T> implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+
+	public ZuoyehuidaEntity() {
+
+	}
+
+	public ZuoyehuidaEntity(T t) {
+		try {
+			BeanUtils.copyProperties(this, t);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+    /**
+     * 主键
+     */
+    @TableId(type = IdType.AUTO)
+    @TableField(value = "id")
+
+    private Integer id;
+
+
+    /**
+     * 作业
+     */
+    @TableField(value = "zuoyejilu_id")
+
+    private Integer zuoyejiluId;
+
+
+    /**
+     * 学生
+     */
+    @TableField(value = "yonghu_id")
+
+    private Integer yonghuId;
+
+
+    /**
+     * 作业文件
+     */
+    @TableField(value = "zuoyehuida_file")
+
+    private String zuoyehuidaFile;
+
+
+    /**
+     * 状态
+     */
+    @TableField(value = "zuoyehuida_types")
+
+    private Integer zuoyehuidaTypes;
+
+
+    /**
+     * 创建时间
+     */
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
+
+    private Date createTime;
+
+
+    /**
+	 * 设置：主键
+	 */
+    public Integer getId() {
+        return id;
+    }
+    /**
+	 * 获取：主键
+	 */
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    /**
+	 * 设置：作业
+	 */
+    public Integer getZuoyejiluId() {
+        return zuoyejiluId;
+    }
+    /**
+	 * 获取：作业
+	 */
+
+    public void setZuoyejiluId(Integer zuoyejiluId) {
+        this.zuoyejiluId = zuoyejiluId;
+    }
+    /**
+	 * 设置：学生
+	 */
+    public Integer getYonghuId() {
+        return yonghuId;
+    }
+    /**
+	 * 获取：学生
+	 */
+
+    public void setYonghuId(Integer yonghuId) {
+        this.yonghuId = yonghuId;
+    }
+    /**
+	 * 设置：作业文件
+	 */
+    public String getZuoyehuidaFile() {
+        return zuoyehuidaFile;
+    }
+    /**
+	 * 获取：作业文件
+	 */
+
+    public void setZuoyehuidaFile(String zuoyehuidaFile) {
+        this.zuoyehuidaFile = zuoyehuidaFile;
+    }
+    /**
+	 * 设置：状态
+	 */
+    public Integer getZuoyehuidaTypes() {
+        return zuoyehuidaTypes;
+    }
+    /**
+	 * 获取：状态
+	 */
+
+    public void setZuoyehuidaTypes(Integer zuoyehuidaTypes) {
+        this.zuoyehuidaTypes = zuoyehuidaTypes;
+    }
+    /**
+	 * 设置：创建时间
+	 */
+    public Date getCreateTime() {
+        return createTime;
+    }
+    /**
+	 * 获取：创建时间
+	 */
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Zuoyehuida{" +
+            "id=" + id +
+            ", zuoyejiluId=" + zuoyejiluId +
+            ", yonghuId=" + yonghuId +
+            ", zuoyehuidaFile=" + zuoyehuidaFile +
+            ", zuoyehuidaTypes=" + zuoyehuidaTypes +
+            ", createTime=" + createTime +
+        "}";
+    }
+}
